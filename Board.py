@@ -1,4 +1,6 @@
 import random
+from Heuristic import Heuristic
+
 
 class Board:
 
@@ -26,5 +28,7 @@ class Board:
 
 
 a = Board()
+board = a.initial_state()
 
-print(a.initial_state())
+h = Heuristic(board)
+print(h.verify_horizontal(h.get_queens_postions()))
