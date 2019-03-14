@@ -30,5 +30,5 @@ class Board:
 a = Board()
 board = a.initial_state()
 
-h = Heuristic(board)
-print(h.verify_horizontal(h.get_queens_postions()))
+h = Heuristic(board).attacks()
+print(h)
