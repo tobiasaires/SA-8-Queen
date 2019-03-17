@@ -1,34 +1,25 @@
 import random
-from Heuristic import Heuristic
 
 
 class Board:
 
 
-    def initial_state(self):
-        board_size = 4
+    def initial_state(self , size = 4):
         queen_position = []
-        for i in range(board_size):
-            queen_position.append(random.randint(0, board_size-1))
-        print(queen_position)
+        for i in range(size):
+            queen_position.append(random.randint(0, size-1))
 
         board = []
 
-        for i in range(board_size):
+        for i in range(size):
             aux = []
-            for j in range(board_size):
+            for j in range(size):
                 aux.append(0)
             board.append(aux)
 
-        for i in range(board_size):
+        for i in range(size):
             board[queen_position[i]][i] = 1
 
 
         return board
 
-
-a = Board()
-board = a.initial_state()
-
-h = Heuristic(board).attacks()
-print(h)
