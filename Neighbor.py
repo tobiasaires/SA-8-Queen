@@ -27,7 +27,10 @@ class Neighbor:
 
         for i in range(num_change):
             change.append(random.randint(0, len(self.board)-1))
-            queens[change[i]] = random.randint(0, len(self.board)-1)
+            x = random.randint(0, len(self.board)-1)
+            while( x == queens[change[i]]):
+                x = random.randint(0, len(self.board) - 1)
+            queens[change[i]] = x
 
 
         new_board = self.create_board(queens)

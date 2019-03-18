@@ -1,8 +1,8 @@
 from Heuristic import Heuristic
 from math import exp
 import random
-import sys
 from Neighbor import Neighbor
+
 
 
 class SimulatedAnnealing:
@@ -18,7 +18,7 @@ class SimulatedAnnealing:
 
     def start(self):
         i = 0
-        success = sys.maxsize
+        success = 1
         current_state = self.start_state
         t = self.startTemp
 
@@ -37,7 +37,7 @@ class SimulatedAnnealing:
 
                 f2 = Heuristic(new_state).attacks()
                 delta = f2 - f1
-                if not t == 0.0:
+                if not t == 0:
                     if (delta <= 0) or (exp(-delta / t) > random.random()):
                         current_state = new_state
                         success += 1
@@ -53,6 +53,5 @@ class SimulatedAnnealing:
         for s in solutions:
             if s not in aux:
                 aux.append(s)
-                print(s)
 
-        return Heuristic(current_state).attacks()
+            return s
